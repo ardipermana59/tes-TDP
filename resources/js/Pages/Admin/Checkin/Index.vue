@@ -1,10 +1,13 @@
 <script setup>
-import { defineProps } from 'vue';
-import AppLayout from '@/Layouts/MyLayout.vue';
+import { Head, useForm, usePage } from '@inertiajs/vue3';
+
 import Breadcrumb from '@/Components/MyBreadcrumb.vue';
-import { useForm } from '@inertiajs/vue3';
+import AppLayout from '@/Layouts/MyLayout.vue';
+
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+
+const page = usePage();
 
 const form = useForm({
     ticket: ''
@@ -13,16 +16,18 @@ const form = useForm({
 const handleCheckin = () => {
     form.post('/admin/check/ticket', {
         onSuccess: () => {
-            toast("Berhasil Checkin", {
+            toast(page.props.flash.message || 'Berhasil checkin', {
                 theme: "auto",
                 type: "success",
             })
         },
         onError: (error) => {
-            toast("Gagal Checkin", {
-                theme: "auto",
-                type: "error",
-            })
+            if (form.hasErrors) {
+                toast(form.errors.message || 'Gagal Checkin', {
+                    theme: "auto",
+                    type: "error",
+                })
+            }
         }
     });
 }
@@ -31,6 +36,8 @@ const handleCheckin = () => {
 
 <template>
     <AppLayout>
+
+        <Head title="Admin Checkin" />
 
         <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
             <Breadcrumb current-page="Checkin" page-title="Checkin" />
@@ -47,7 +54,7 @@ const handleCheckin = () => {
                 </svg>
                 <span class="sr-only">Info</span>
                 <div>
-                    <span class="font-medium">Berhasil!</span> checkin.
+                    <span class="font-medium">{{ page.props.flash.message }}</span>
                 </div>
             </div>
 

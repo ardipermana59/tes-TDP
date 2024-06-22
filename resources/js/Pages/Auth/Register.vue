@@ -32,7 +32,7 @@ const submit = () => {
         </template>
 
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-            Create a Free Account
+            Daftar sekarang dan dapatkan tiket event anda secara gratis
         </h2>
 
         <form class="mt-8 space-y-6" @submit.prevent="submit">

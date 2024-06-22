@@ -12,6 +12,7 @@ export default {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
         "./resources/**/*.js",
+        "./node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx,vue}",
         "./node_modules/flowbite/**/*.js",
     ],
     safelist: [

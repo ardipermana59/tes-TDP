@@ -22,7 +22,6 @@
     "dependencies": {
         "apexcharts": "^3.48.0",
         "flowbite-datepicker": "^1.2.6",
-        "flowbite-vue": "^0.1.3",
         "vue3-toastify": "^0.2.1"
     }
 }

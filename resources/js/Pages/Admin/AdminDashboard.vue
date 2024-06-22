@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from 'vue';
 import AppLayout from '@/Layouts/MyLayout.vue';
 import Breadcrumb from '@/Components/MyBreadcrumb.vue';
 

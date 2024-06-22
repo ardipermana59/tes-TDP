@@ -1,30 +1,31 @@
 <script setup>
 import { defineProps } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { useForm, Head   } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/MyLayout.vue';
 import Breadcrumb from '@/Components/MyBreadcrumb.vue';
 
 const props = defineProps(['ticket']);
 
+const form = useForm({});
+
 const handleRegister = () => {
-    router.post('/daftar', {}, {
+    form.post('/daftar', {
         onSuccess: () => {
             alert('Pendaftaran berhasil, simpan tiket anda!');
         },
         onError: (error) => {
-            alert('Pendaftaran gagal: ' + error.message);
+            alert('Pendaftaran gagal');
         }
     });
 }
-
 </script>
 
 <template>
     <AppLayout>
 
+        <Head title="Dashboard" />
         <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-3 xl:gap-4 dark:bg-gray-900">
             <Breadcrumb current-page="Dashboard Peserta" page-title="Dashboard Peserta" />
-
         </div>
         <div class="px-4">
             <div v-if="ticket"
@@ -55,7 +56,7 @@ const handleRegister = () => {
                         <div class="col-span-6 sm:col-full">
                             <button
                                 class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                                type="submit">Daftar</button>
+                                type="submit" :disabled="form.processing">Daftar</button>
                         </div>
                     </div>
                 </form>

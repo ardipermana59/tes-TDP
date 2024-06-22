@@ -38,7 +38,7 @@ const submit = () => {
             <AuthenticationCardLogo />
         </template>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-            Sign in to platform
+            Login untuk melihat tiket anda
         </h2>
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
             {{ status }}
@@ -79,9 +79,9 @@ const submit = () => {
             </button>
             <div class="text-sm font-medium text-gray-500 dark:text-gray-400">
                 Not registered?
-                <a  class="text-primary-700 hover:underline dark:text-primary-500">Create
+                <Link :href="route('register')" class="text-primary-700 hover:underline dark:text-primary-500">Create
                 account
-                </a>
+                </Link>
             </div>
         </form>
     </AuthenticationCard>

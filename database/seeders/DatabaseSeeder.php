@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin'
         ]);
 
-         for ($i = 1; $i <= 10; $i++) {
+         for ($i = 1; $i <= 50; $i++) {
             User::factory()->create([
                 'name' => "Peserta $i",
                 'email' => "peserta{$i}@gmail.com",

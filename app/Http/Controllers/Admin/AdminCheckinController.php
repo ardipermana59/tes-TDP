@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ticket;
-use Error;
 use Illuminate\Http\Request;
+use App\Models\Ticket;
 use Inertia\Inertia;
 
 class AdminCheckinController extends Controller
@@ -21,7 +20,7 @@ class AdminCheckinController extends Controller
             'ticket' => ['required', 'string'],
         ]);
 
-        $ticket = Ticket::where('ticket', $request->ticket)->first();
+        $ticket = Ticket::with('user')->where('ticket', $request->ticket)->first();
 
         if (!$ticket) {
             return redirect()->back()->withErrors(['message' => 'Tiket tidak ditemukan']);
@@ -35,6 +34,6 @@ class AdminCheckinController extends Controller
 
         $ticket->save();
 
-        return redirect()->back()->with(['message' => 'Berhasil checkin']);
+        return redirect()->back()->with(['message' => "Berhasil checkin A/N " . $ticket->user->name]);
     }
 }
