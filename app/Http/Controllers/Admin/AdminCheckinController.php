@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class CheckinController extends Controller
+class AdminCheckinController extends Controller
 {
     public function index()
     {

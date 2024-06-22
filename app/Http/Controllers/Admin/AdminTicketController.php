@@ -7,14 +7,16 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ReportController extends Controller
+class AdminTicketController extends Controller
 {
     public function index()
     {
         $tickets = Ticket::with('user')->get();
 
-        return Inertia::render('Admin/Report/Index', [
+        return Inertia::render('Admin/Pesanan/Index', [
             'tickets' => $tickets,
         ]);
     }
+
+    // public function destroy() {}
 }
