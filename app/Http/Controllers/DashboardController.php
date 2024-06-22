@@ -21,6 +21,6 @@ class DashboardController extends Controller
             ]);
         }
         
-        return Inertia::render('Admin/Dashboard');
+        return Inertia::render('Admin/AdminDashboard');
     }
 }
